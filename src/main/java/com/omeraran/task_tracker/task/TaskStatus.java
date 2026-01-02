@@ -1,4 +1,4 @@
-package com.omeraran.task_tracker;
+package com.omeraran.task_tracker.task;
 
 public enum TaskStatus {
     TODO,

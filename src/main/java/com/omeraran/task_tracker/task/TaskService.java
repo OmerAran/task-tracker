@@ -1,10 +1,9 @@
-package com.omeraran.task_tracker;
+package com.omeraran.task_tracker.task;
 
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 
 
 @Service

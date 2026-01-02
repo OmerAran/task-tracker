@@ -1,4 +1,4 @@
-package com.omeraran.task_tracker;
+package com.omeraran.task_tracker.task;
 
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
