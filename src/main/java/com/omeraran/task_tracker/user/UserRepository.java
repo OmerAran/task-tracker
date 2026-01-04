@@ -14,4 +14,8 @@ public interface UserRepository extends JpaRepository<UserEntity, Long> {
             select * from users where id = :id
             """, nativeQuery = true)
     Optional<UserEntity> retrieve(Long id);
+
+    Optional<UserEntity> findByUsername(String username);
+
+    boolean existsByUsername(String username);
 }

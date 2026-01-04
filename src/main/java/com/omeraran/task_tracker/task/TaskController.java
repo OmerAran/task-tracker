@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
 import org.springframework.http.HttpStatus;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -32,6 +33,7 @@ public class TaskController {
 
     @PostMapping("/api/v1/users/{userId}/tasks")
     @ResponseStatus(HttpStatus.CREATED)
+    @PreAuthorize("hasRole('USER')")
     public Task create(@PathVariable Long userId, @RequestBody Task request){
         log.info("[START] TaskController - create - user id : {}", userId);
         return service.create(userId, request);

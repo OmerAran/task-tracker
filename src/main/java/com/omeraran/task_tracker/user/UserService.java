@@ -3,6 +3,9 @@ package com.omeraran.task_tracker.user;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.Objects;
+import java.util.Optional;
+
 @Service
 @AllArgsConstructor
 public class UserService {

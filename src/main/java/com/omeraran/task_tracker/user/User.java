@@ -1,5 +1,6 @@
 package com.omeraran.task_tracker.user;
 
+import com.omeraran.task_tracker.enums.Role;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -16,4 +17,5 @@ public class User {
     private String username;
     private String password;
     private String email;
+    private Role role;
 }

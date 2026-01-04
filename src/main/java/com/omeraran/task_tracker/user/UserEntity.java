@@ -1,5 +1,6 @@
 package com.omeraran.task_tracker.user;
 
+import com.omeraran.task_tracker.enums.Role;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -21,6 +22,7 @@ public class UserEntity {
     private String username;
     private String password;
     private String email;
+    private Role role;
 
     public User toModel() {
         return User.builder()
@@ -28,6 +30,7 @@ public class UserEntity {
                 .username(username)
                 .email(email)
                 .password(password)
+                .role(role)
                 .build();
     }
 }
