@@ -5,6 +5,7 @@ import com.omeraran.task_tracker.application.task.dto.TaskResponse;
 import com.omeraran.task_tracker.application.task.dto.TaskUpdateRequest;
 import com.omeraran.task_tracker.domain.task.Task;
 import com.omeraran.task_tracker.domain.task.TaskService;
+import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
@@ -54,7 +55,7 @@ public class TaskController {
     @PostMapping("/api/v1/users/{userId}/tasks")
     @ResponseStatus(HttpStatus.CREATED)
     @PreAuthorize("hasRole('USER')")
-    public TaskResponse create(@PathVariable Long userId, @RequestBody TaskRequest request){
+    public TaskResponse create(@PathVariable Long userId, @Valid @RequestBody TaskRequest request){
         log.info("[START] TaskController - create - user id : {}", userId);
 
         var task = new Task(
@@ -87,7 +88,7 @@ public class TaskController {
 
     @PutMapping("/api/v1/users/{userId}/tasks")
     @ResponseStatus(HttpStatus.OK)
-    public TaskResponse update(@PathVariable Long userId, @RequestBody TaskRequest request){
+    public TaskResponse update(@PathVariable Long userId, @Valid @RequestBody TaskRequest request){
         log.info("[START] TaskController - update - user id: {} and task id: {}", userId, request.id());
 
         var task = new Task(

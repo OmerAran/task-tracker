@@ -6,6 +6,7 @@ import com.omeraran.task_tracker.domain.enums.Role;
 import com.omeraran.task_tracker.infrastructure.security.JwtTokenProvider;
 import com.omeraran.task_tracker.infrastructure.user.UserEntity;
 import com.omeraran.task_tracker.domain.user.UserRepository;
+import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -23,7 +24,7 @@ public class AuthController {
 
 
     @PostMapping("/api/v1/auth/register")
-    public ResponseEntity<String> register(@RequestBody UserRegisterRequest request) {
+    public ResponseEntity<String> register(@Valid @RequestBody UserRegisterRequest request) {
         if (repository.existsByUsername(request.username())) {
             throw new RuntimeException("Username is already taken");
         }
@@ -39,7 +40,7 @@ public class AuthController {
     }
 
     @PostMapping("/api/v1/auth/login")
-    public ResponseEntity<String> login(@RequestBody UserLoginRequest request) {
+    public ResponseEntity<String> login(@Valid @RequestBody UserLoginRequest request) {
         var userEntity = repository.findByUsername(request.username())
                 .orElseThrow(() -> new RuntimeException("Invalid username"));
 

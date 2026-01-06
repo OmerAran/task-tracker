@@ -2,6 +2,7 @@ package com.omeraran.task_tracker.application.user;
 
 
 import com.omeraran.task_tracker.domain.user.UserService;
+import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
@@ -29,7 +30,7 @@ public class UserController {
     @PutMapping("/api/v1/users/{id}")
     @ResponseStatus(HttpStatus.OK)
     @PreAuthorize("hasAnyRole('ROLE_USER', 'ADMIN')")
-    public UserResponse update(@PathVariable Long id, @RequestBody UpdateRequest request) {
+    public UserResponse update(@PathVariable Long id,@Valid @RequestBody UpdateRequest request) {
         log.info("[START] UserController - update - user id: {}", id);
         var updated = service.update(id, request.toModel());
         return new UserResponse(updated.getId(), updated.getUsername(), updated.getEmail());

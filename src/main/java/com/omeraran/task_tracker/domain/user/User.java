@@ -1,6 +1,7 @@
 package com.omeraran.task_tracker.domain.user;
 
 import com.omeraran.task_tracker.domain.enums.Role;
+import jakarta.validation.constraints.Email;
 import lombok.*;
 
 @Getter
@@ -15,8 +16,6 @@ public class User {
     private String email;
     private Role role;
 
-    public User(String email, String username) {
-        this.email = email;
-        this.username = username;
+    public User(@Email(message = "Email format is not inappropriate.") String email) {
     }
 }

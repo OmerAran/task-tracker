@@ -30,10 +30,7 @@ public class UserService {
     }
 
     private void populate(User request, UserEntity entity) {
-        entity.setUsername(request.getUsername());
         entity.setEmail(request.getEmail());
-        entity.setPassword(passwordEncoder.encode(request.getPassword()));
-
     }
 
 }
