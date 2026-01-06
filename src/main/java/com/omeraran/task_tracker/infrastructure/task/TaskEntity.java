@@ -1,6 +1,8 @@
-package com.omeraran.task_tracker.task;
+package com.omeraran.task_tracker.infrastructure.task;
 
 
+import com.omeraran.task_tracker.domain.task.Task;
+import com.omeraran.task_tracker.domain.task.TaskStatus;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;

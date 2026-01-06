@@ -1,4 +1,4 @@
-package com.omeraran.task_tracker.security;
+package com.omeraran.task_tracker.infrastructure.security;
 
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;

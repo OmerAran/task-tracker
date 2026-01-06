@@ -1,10 +1,11 @@
-package com.omeraran.task_tracker.auth;
+package com.omeraran.task_tracker.application.auth;
 
-import com.omeraran.task_tracker.enums.Role;
-import com.omeraran.task_tracker.security.JwtTokenProvider;
-import com.omeraran.task_tracker.user.User;
-import com.omeraran.task_tracker.user.UserEntity;
-import com.omeraran.task_tracker.user.UserRepository;
+import com.omeraran.task_tracker.application.auth.dto.UserLoginRequest;
+import com.omeraran.task_tracker.application.auth.dto.UserRegisterRequest;
+import com.omeraran.task_tracker.domain.enums.Role;
+import com.omeraran.task_tracker.infrastructure.security.JwtTokenProvider;
+import com.omeraran.task_tracker.infrastructure.user.UserEntity;
+import com.omeraran.task_tracker.domain.user.UserRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.password.PasswordEncoder;

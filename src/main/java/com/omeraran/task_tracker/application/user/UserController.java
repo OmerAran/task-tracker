@@ -1,9 +1,11 @@
-package com.omeraran.task_tracker.user;
+package com.omeraran.task_tracker.application.user;
 
 
+import com.omeraran.task_tracker.domain.user.UserService;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 
@@ -16,34 +18,30 @@ public class UserController {
 
     @GetMapping("/api/v1/users/{id}")
     @ResponseStatus(HttpStatus.OK)
-    public User retrieve(@PathVariable Long id){
+    @PreAuthorize("hasAnyRole('ROLE_USER', 'ADMIN'))")
+    public UserResponse retrieve(@PathVariable Long id) {
         log.info("[START] UserController - retrieve - user id: {}", id);
-        return service.retrieve(id);
-
+        var user = service.retrieve(id);
+        return new UserResponse(user.getId(), user.getUsername(), user.getEmail());
     }
 
-    @PostMapping("/api/v1/users")
-    @ResponseStatus(HttpStatus.CREATED)
-    public User create(@RequestBody User request){
-        log.info("[START] UserController - create");
-        return service.create(request);
-    }
-    
+
     @PutMapping("/api/v1/users/{id}")
     @ResponseStatus(HttpStatus.OK)
-    public User update(@PathVariable Long id, @RequestBody User request){
+    @PreAuthorize("hasAnyRole('ROLE_USER', 'ADMIN')")
+    public UserResponse update(@PathVariable Long id, @RequestBody UpdateRequest request) {
         log.info("[START] UserController - update - user id: {}", id);
-        return service.update(id, request);
+        var updated = service.update(id, request.toModel());
+        return new UserResponse(updated.getId(), updated.getUsername(), updated.getEmail());
 
     }
 
     @DeleteMapping("/api/v1/users/{id}")
     @ResponseStatus(HttpStatus.OK)
-    public void delete(@PathVariable Long id){
+    @PreAuthorize("hasAnyRole('ROLE_USER', 'ADMIN')")
+    public void delete(@PathVariable Long id) {
         log.info("[START] UserController - delete - user id: {}", id);
-
         service.delete(id);
-
         log.info("[END] UserController - delete - user id : {}", id);
     }
 }

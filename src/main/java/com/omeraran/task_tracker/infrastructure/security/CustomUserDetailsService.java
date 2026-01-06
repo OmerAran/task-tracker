@@ -1,7 +1,7 @@
-package com.omeraran.task_tracker.security;
+package com.omeraran.task_tracker.infrastructure.security;
 
-import com.omeraran.task_tracker.user.UserEntity;
-import com.omeraran.task_tracker.user.UserRepository;
+import com.omeraran.task_tracker.infrastructure.user.UserEntity;
+import com.omeraran.task_tracker.domain.user.UserRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.User;

@@ -1,6 +1,6 @@
-package com.omeraran.task_tracker.security;
+package com.omeraran.task_tracker.infrastructure.security;
 
-import com.omeraran.task_tracker.enums.Role;
+import com.omeraran.task_tracker.domain.enums.Role;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;

@@ -1,6 +1,7 @@
-package com.omeraran.task_tracker.user;
+package com.omeraran.task_tracker.infrastructure.user;
 
-import com.omeraran.task_tracker.enums.Role;
+import com.omeraran.task_tracker.domain.enums.Role;
+import com.omeraran.task_tracker.domain.user.User;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;

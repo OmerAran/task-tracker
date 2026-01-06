@@ -1,5 +1,6 @@
-package com.omeraran.task_tracker.task;
+package com.omeraran.task_tracker.domain.task;
 
+import com.omeraran.task_tracker.infrastructure.task.TaskEntity;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 

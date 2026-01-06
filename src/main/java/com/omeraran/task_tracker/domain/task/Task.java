@@ -1,8 +1,9 @@
-package com.omeraran.task_tracker.task;
+package com.omeraran.task_tracker.domain.task;
 
 import lombok.*;
 
 @AllArgsConstructor
+@NoArgsConstructor
 @Getter
 @Setter
 @Builder(builderMethodName = "builder")

@@ -1,5 +1,6 @@
-package com.omeraran.task_tracker.task;
+package com.omeraran.task_tracker.domain.task;
 
+import com.omeraran.task_tracker.infrastructure.task.TaskEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;

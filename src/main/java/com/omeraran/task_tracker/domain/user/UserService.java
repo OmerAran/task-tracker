@@ -1,25 +1,19 @@
-package com.omeraran.task_tracker.user;
+package com.omeraran.task_tracker.domain.user;
 
+import com.omeraran.task_tracker.infrastructure.user.UserEntity;
 import lombok.AllArgsConstructor;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
-
-import java.util.Objects;
-import java.util.Optional;
 
 @Service
 @AllArgsConstructor
 public class UserService {
 
     private final UserRepository repository;
+    private final PasswordEncoder passwordEncoder;
 
     public User retrieve(Long id){
         return repository.retrieve(id).orElseThrow(RuntimeException::new).toModel();
-    }
-
-    public User create(User request) {
-        var entity = new UserEntity();
-        populate(request, entity);
-        return repository.save(entity).toModel();
     }
 
     public User update(Long id, User request) {
@@ -36,10 +30,10 @@ public class UserService {
     }
 
     private void populate(User request, UserEntity entity) {
-        entity.setId(request.getId());
         entity.setUsername(request.getUsername());
         entity.setEmail(request.getEmail());
-        entity.setPassword(request.getPassword());
+        entity.setPassword(passwordEncoder.encode(request.getPassword()));
+
     }
 
 }
