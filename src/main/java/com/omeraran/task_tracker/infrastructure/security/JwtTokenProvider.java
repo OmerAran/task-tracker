@@ -21,13 +21,14 @@ public class JwtTokenProvider {
     @Value("${jwt.expiration}")
     private long jwtExpiration;
 
-    public String generateToken(String username, Role role) {
-       return Jwts.builder()
+    public String generateToken(Long userId, String username, Role role) {
+        return Jwts.builder()
                 .setSubject(username)
                 .claim("role", role.name())
-               .setIssuedAt(new Date())
-               .setExpiration(new Date(System.currentTimeMillis() + jwtExpiration))
-               .signWith(getSigningKey(), SignatureAlgorithm.HS256)
+                .claim("userId", userId)
+                .setIssuedAt(new Date())
+                .setExpiration(new Date(System.currentTimeMillis() + jwtExpiration))
+                .signWith(getSigningKey(), SignatureAlgorithm.HS256)
                 .compact();
     }
 

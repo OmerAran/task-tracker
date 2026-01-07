@@ -47,7 +47,7 @@ public class AuthController {
         if (!passwordEncoder.matches(request.password(), userEntity.getPassword())) {
             throw new RuntimeException("Invalid password");
         }
-        var token = jwtTokenProvider.generateToken(userEntity.getUsername(), userEntity.getRole());
+        var token = jwtTokenProvider.generateToken(userEntity.getId(),userEntity.getUsername(), userEntity.getRole());
 
         return ResponseEntity.ok(token);
     }

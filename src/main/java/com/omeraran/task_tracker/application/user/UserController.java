@@ -19,7 +19,7 @@ public class UserController {
 
     @GetMapping("/api/v1/users/{id}")
     @ResponseStatus(HttpStatus.OK)
-    @PreAuthorize("hasAnyRole('ROLE_USER', 'ADMIN'))")
+    @PreAuthorize("hasAnyRole('USER', 'ADMIN'))")
     public UserResponse retrieve(@PathVariable Long id) {
         log.info("[START] UserController - retrieve - user id: {}", id);
         var user = service.retrieve(id);
@@ -29,7 +29,7 @@ public class UserController {
 
     @PutMapping("/api/v1/users/{id}")
     @ResponseStatus(HttpStatus.OK)
-    @PreAuthorize("hasAnyRole('ROLE_USER', 'ADMIN')")
+    @PreAuthorize("hasAnyRole('USER', 'ADMIN')")
     public UserResponse update(@PathVariable Long id,@Valid @RequestBody UpdateRequest request) {
         log.info("[START] UserController - update - user id: {}", id);
         var updated = service.update(id, request.toModel());
@@ -39,7 +39,7 @@ public class UserController {
 
     @DeleteMapping("/api/v1/users/{id}")
     @ResponseStatus(HttpStatus.OK)
-    @PreAuthorize("hasAnyRole('ROLE_USER', 'ADMIN')")
+    @PreAuthorize("hasAnyRole('USER', 'ADMIN')")
     public void delete(@PathVariable Long id) {
         log.info("[START] UserController - delete - user id: {}", id);
         service.delete(id);
